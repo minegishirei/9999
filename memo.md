@@ -13,7 +13,7 @@ https://t23m-navi.jp/indexes/d/140521
 https://diamond-fudosan.jp/ud/realestate_price_mansion/url/%E5%9F%BC%E7%8E%89%E7%9C%8C
 
 - 空室が出てきたときに、修繕積立金にかけれるお金が減る。
-- 耐用年数は
+- 耐用年数は47年。
 
 
 
