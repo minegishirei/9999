@@ -53,7 +53,9 @@ docker run debian echo "Hello world"
 `docker run`コマンドは任意のコマンドを実行できますが、`bash`や`python3` などの対話型のサービスを起動することもできます。
 ただし、対話型のサービスを立ち上げるためには`-it`オプションを指定する必要があります。
 
-
+```sh
+docker run -it  debian 
+```
 
 
 
