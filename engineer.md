@@ -48,7 +48,59 @@ docker run debian echo "Hello world"
 このように、 **`docker run`コマンドは指定したイメージからコンテナを立ち上げ、任意のコマンドを実行することができます。** 
 
 
-## docker runでssh接続する
+
+## docker run のイメージ名の指定について
+
+`docker run`コマンドで使用する<イメージ名>は、起動したいDockerイメージを指定します。
+
+```sh
+docker run  <オプション(-または--で始まる)>  <イメージ名>  <コマンド>
+```
+
+この<イメージ名>にはいくつかの指定方法があります。
+
+- 公式イメージ
+    - Docker Hubなどのイメージレジストリから提供されている公式イメージは、単純にイメージ名を指定するだけで利用できます。
+    - 例えば、debianやnginxなどが公式イメージの一例です。
+
+```sh
+docker run debian
+docker run nginx
+```
+
+- カスタムイメージ
+    - ユーザーが自身で作成したカスタムイメージは、そのイメージの名前を指定します。通常、ユーザー名や組織名と共にイメージ名が指定されます。
+
+```sh
+docker run myusername/myimage
+```
+
+- タグ付きイメージ
+    - 同じイメージ名でも、バージョンやタグによって異なるバージョンのイメージを指定することができます。
+    - デフォルトでは、latestというタグが使用されます。
+
+```sh
+docker run myimage:latest
+docker run myimage:v1.0
+```
+
+
+- Dockerレジストリの指定
+    - イメージがDocker Hub以外のレジストリにある場合は、そのレジストリのURLを含めて指定します。
+    - 次の例は`AWS Public Gallery`というAWSが提供するパブリックレジストリのurlで、mysqlを指定しています。
+
+```sh
+docker run public.ecr.aws/docker/library/mysql:oraclelinux8
+```
+
+これらの方法を使用して、docker runコマンドで適切なイメージを指定し、コンテナを起動することができます。
+
+
+
+
+
+
+## docker runでbashに接続する
 
 `docker run`コマンドは任意のコマンドを実行できますが、`bash`や`python3` などの対話型のサービスを起動することもできます。
 ただし、対話型のサービスを立ち上げるためには`-it`オプションを指定する必要があります。
@@ -68,12 +120,6 @@ docker run -it python:3
 ```
 
 これにより、Pythonの対話型インタプリタが起動し、コンテナ内でPythonのコードを対話的に実行できるようになります。
-
-
-
-
-
-
 
 
 
