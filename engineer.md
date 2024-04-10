@@ -40,14 +40,25 @@ reiはポルトガル語で王様という意味らしい。
 
 AWSでDockerコンテナを動かすために「最低限」必要なサービスは以下の通りです。
 
-- Amazon Elastic Container Service (ECS) または Amazon Elastic Kubernetes Service (EKS)
+- `Amazon Elastic Container Service (ECS)` または `Amazon Elastic Kubernetes Service (EKS)`
     - ECS,EKSはDockerコンテナを実行するサービスの本体です。
     - ECSは比較的シンプルなコンテナ管理サービスです。
     - EKSはKubernetesを運用しているため、大規模なシステムでもオーケストレーションが可能になっているサービスです。
 
 使い分けをまとめると、「EKSを使うときは大規模なサービス」「ECSは小規模なサービス」として覚えておくとよいと思います。
 
-- Amazon Elastic Container Registry (ECR)
+また、ECS Fargateを使用する際には ECS Taskdefineを作成する必要があります。
+
+- `ECS TaskDefine`
+    - タスク定義は1つ以上のコンテナ定義を含みます。各コンテナ定義には、Dockerイメージの指定、ネットワークポートのマッピング、ボリュームのマウントなどの設定が含まれます。
+    - コンテナが使用するCPUおよびメモリリソースの割り当てを指定します。
+    - エントリーポイント、または実行コマンドの上書をします。
+    - そのほか、ネットワーク設定やデータボリュームの指定を行います。
+
+ローカル開発環境では`docker run`コマンドのオプションを指定したり`docker-compose.yml`ファイルに実行時のオプションを指定します。
+AWSでコンテナを動かすためには`ECS taskdefine`でこれらのオプションを定義する必要があるのです。
+
+- `Amazon Elastic Container Registry (ECR)`
     - ECRはプライベートなコンテナレジストリです。ビルドしたDockerイメージを保存しておくのに使います。
     - Docker Hubにイメージを保存するのもよいですが、より機密性が求められる業務システムはプライベートなレジストリにDockerイメージを保存するケースが多いです。
 
@@ -66,7 +77,17 @@ Dockerコンテナを動かすために最低限必要なサービスは`ECS`と
 - Blue/Green Deployができない（システムの入れ替え時にダウンタイムが発生する）
 - ソースコードの変更の検知からサービスの入れ替えをしてくれない。
 
-これらの
+これらの課題を解決するためのサービスが AWS Codeサービス群です。
+
+- `AWS CodePipeline` 
+    - ソースコードのビルド、テスト、デプロイメントを自動化するためのサービスです。
+    - CodecommitやGithubなどの特定のリポジトリの特定のブランチの変更を検知し、Codebuildやcodedeployに命令を出します。
+    - これにより、手動でのビルド作業が不要になり完全自動化されたCICD環境を整えることができるのです。
+- `AWS CodeDeploy`
+    - Blue/Green Deployを可能にするデプロイメントサービスです。
+    - 新規デプロイの際には、新しいコンテナを立ち上げコンテナのヘルスチェック確認を行った後で、ロードバランサーの接続先を切り替えます。
+    - これにより、新しいバージョンのアプリケーションをデプロイする際にダウンタイムを最小限に抑えることができます。
+
 
 
 
