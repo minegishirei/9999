@@ -38,6 +38,8 @@ reiはポルトガル語で王様という意味らしい。
 
 ## AWSでdockerコンテナを動かすために「最低限」必要なサービス
 
+<img src="https://github.com/minegishirei/store/blob/main/docker/aws/ecs/ecs-lifecycle.png?raw=true">
+
 AWSでDockerコンテナを動かすために「最低限」必要なサービスは以下の通りです。
 
 - `Amazon Elastic Container Service (ECS)` または `Amazon Elastic Kubernetes Service (EKS)`
@@ -64,7 +66,13 @@ AWSでコンテナを動かすためには`ECS taskdefine`でこれらのオプ�
 
 業務システムとして使用する場合はECRは必須となります。
 
-Dockerコンテナを動かすために最低限必要なサービスは`ECS`と`ECR`のみです。
+Dockerコンテナを動かすために最低限必要なサービスは`ECS service` `ECS Taskdefine` `ECR`のみです。
+これらをまとめると、以下のような図面になります。
+
+<img src="https://github.com/minegishirei/store/blob/main/docker/aws/ecs/ecs-lifecycle.png?raw=true">
+
+
+
 
 
 ## AWSでdockerコンテナを動かす際に「一般的に必要とされる」サービス
@@ -82,12 +90,18 @@ Dockerコンテナを動かすために最低限必要なサービスは`ECS`と
 - `AWS CodePipeline` 
     - ソースコードのビルド、テスト、デプロイメントを自動化するためのサービスです。
     - CodecommitやGithubなどの特定のリポジトリの特定のブランチの変更を検知し、Codebuildやcodedeployに命令を出します。
-    - これにより、手動でのビルド作業が不要になり完全自動化されたCICD環境を整えることができるのです。
+    - 手動でのビルド作業が不要になり完全自動化されたCICD環境を整えることができるのです。
 - `AWS CodeDeploy`
     - Blue/Green Deployを可能にするデプロイメントサービスです。
     - 新規デプロイの際には、新しいコンテナを立ち上げコンテナのヘルスチェック確認を行った後で、ロードバランサーの接続先を切り替えます。
-    - これにより、新しいバージョンのアプリケーションをデプロイする際にダウンタイムを最小限に抑えることができます。
+    - 新しいバージョンのアプリケーションをデプロイする際にダウンタイムを最小限に抑えることができます。
+- `AWS Codebuild`
+    - CodeBuildを使用すると、コンテナイメージのビルドプロセスを自動化できます。
+    - ソースコードの変更があったときに自動的にビルドがトリガーされ、最新のコンテナイメージが作成されます。
 
+これらをまとめると、以下のような図面になります。
+
+<img src="https://github.com/minegishirei/store/blob/main/docker/aws/ecs/fargate_pipeline.png?raw=true">
 
 
 
