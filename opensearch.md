@@ -127,7 +127,7 @@ opensearchを実行しているインスタンスのこと。
 PUT リクエストまたは POST リクエストを使用します。
 
 ```json
-PUT _index_template/daily_logs
+PUT /users
 {
   "index_patterns": [
     "logs-2020-01-*"
@@ -162,7 +162,7 @@ PUT _index_template/daily_logs
 Cloneしたインデックスは元のインデックスとつながっておらず、新規インデックスの変更は元のインデックスには反映されません。
 
 ```json
-PUT /sample-index1/_clone/cloned-index1
+PUT /users/_clone/users_clone
 {
   "settings": {
     "index": {
@@ -179,7 +179,7 @@ PUT /sample-index1/_clone/cloned-index1
 jsonボディでは新しいインデックスの設定を定義しています。
 
 - settingsセクションでは、新しいインデックスの設定が定義されています。ここでは、新しいインデックスに2つのシャードと1つのレプリカを設定しています。
-- aliasesセクションでは、新しいインデックスにsample-alias1という別名を割り当てるよう指示しています。
+- aliasesセクションでは、新しいインデックスに`users_clone`という別名を割り当てるよう指示しています。
 
 
 
@@ -189,18 +189,45 @@ jsonボディでは新しいインデックスの設定を定義しています�
 Indexの削除の為には`DELETE` メソッドを使用する。
 この、`DELETE` メソッドは`GET`や`POST`と同じHTTPメソッドの一種であり、Opensearchもこのリクエスト形式に基づいています。
 
-例えば、`pages`インデックスを削除したい場合、コンソール画面から次のように入力します。
+例えば、`users_clone`インデックスを削除したい場合、コンソール画面から次のように入力します。
 
 ```sh
-DELETE /pages
+DELETE /users_clone
 ```
 
 
-## 変更の方法
+## Indexにdocumentを追加する（データ追加）
 
+Indexにデータを追加するには、`POST`メソッドを使用する。
+
+
+
+### bulkインサート
+
+データをまとめて追加したいときは、`bulk`インサートと呼ばれる手法を使う。
+エンドポイントの指定は`_bulk`を指定し、jsonの集合を書き込むことで複数データをまとめてインサートできる。
+
+```json
+POST /_bulk
+{ "index": { "_index": "users", "_id": "1" } }
+{
+  "id" : 1,
+  "name" : "tanaka tarou",
+  "description" : "happy new year!"
+}
+{ "index": { "_index": "users", "_id": "2" } }
+{
+  "id" : 2,
+  "name" : "sakura hanako",
+  "description" : "hello world!"
+}
 ```
-PUT /products
-```
+
+
+
+
+
+
 
 
 
