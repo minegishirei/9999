@@ -102,8 +102,17 @@ PUT sample-index1
 これにより、"sample-index1"という名前の新しいインデックスが作成され、指定されたマッピングが適用されます。このマッピングでは、"year"フィールドはテキスト型、"age"フィールドは整数型、"director"フィールドもテキスト型として定義されています。
 
 
+### shard（シャード）
+
+Opensearchで保存されるデータの場所を、`shard`(シャード)と呼ぶ
+
+- `primary shard` : Opensearchで保存されたデータが真っ先に格納される場所。
+- `replica shard` : primary shardへ保存された後、次に保存される場所。一つの`primary shard`は複数のレプリカを持つことができ、`primary shard`に何かしらの障害が発生した時に、`replica shard`は`primary shard`へ昇格することができる。
 
 
+### node（ノード）
+
+opensearchを実行しているインスタンスのこと。
 
 
 
@@ -157,7 +166,7 @@ PUT /sample-index1/_clone/cloned-index1
 {
   "settings": {
     "index": {
-      "number_of_shards": 2,
+      "number_of_shards": 1,
       "number_of_replicas": 1
     }
   },
