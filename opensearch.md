@@ -75,6 +75,34 @@ from https://qiita.com/hkano/items/a097d6c2fa103752dce9
 ```
 
 
+### mapping
+
+Indexの定義。
+どのようにデータを格納するかを定義することができます。
+
+Indexのmappingは必ずしも必要なものではなく、データ定義がなくとも「データの追加処理」をすればIndexの作成から自動で対応してくれます。
+しかし、例えば`year`の代わりに`string`を使用してほしいことを明示したい時などは、mappingを行い、データ型を明示する必要があります。
+
+明示的なマッピングでは`PUT`リクエストをindexに投げることで、設定の変更が可能です。
+
+```json
+PUT sample-index1
+{
+  "mappings": {
+    "properties": {
+      "year":    { "type" : "text" },
+      "age":     { "type" : "integer" },
+      "director":{ "type" : "text" }
+    }
+  }
+}
+```
+
+上記は、OpenSearchで新しいインデックスを作成するためのリクエストです。
+これにより、"sample-index1"という名前の新しいインデックスが作成され、指定されたマッピングが適用されます。このマッピングでは、"year"フィールドはテキスト型、"age"フィールドは整数型、"director"フィールドもテキスト型として定義されています。
+
+
+
 
 
 
