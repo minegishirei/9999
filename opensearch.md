@@ -149,6 +149,31 @@ PUT _index_template/daily_logs
 
 ## Indexの複製
 
+`_clone`エンドポイントに`PUT`メソッドでアクセスすることで、新しいインデックスとしてCloneすることが可能です。
+Cloneしたインデックスは元のインデックスとつながっておらず、新規インデックスの変更は元のインデックスには反映されません。
+
+```json
+PUT /sample-index1/_clone/cloned-index1
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 2,
+      "number_of_replicas": 1
+    }
+  },
+  "aliases": {
+    "sample-alias1": {}
+  }
+}
+```
+
+jsonボディでは新しいインデックスの設定を定義しています。
+
+- settingsセクションでは、新しいインデックスの設定が定義されています。ここでは、新しいインデックスに2つのシャードと1つのレプリカを設定しています。
+- aliasesセクションでは、新しいインデックスにsample-alias1という別名を割り当てるよう指示しています。
+
+
+
 
 ## Indexの削除の仕方
 
