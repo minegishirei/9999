@@ -45,22 +45,7 @@ from https://qiita.com/hkano/items/a097d6c2fa103752dce9
 - 一つの`Index`には、大量の`Document`が格納されます。
 
 ```json
-{
-  "took": 5,
-  "timed_out": false,
-  "_shards": {
-    "total": 1,
-    "successful": 1,
-    "skipped": 0,
-    "failed": 0
-  },
-  "hits": {
-    "total": {
-      "value": 3,
-      "relation": "eq"
-    },
-    "max_score": 1.0708848,
-    "hits": [
+[
       {
         "_index": "books",
         "_type": "_doc",
@@ -85,21 +70,8 @@ from https://qiita.com/hkano/items/a097d6c2fa103752dce9
           "author": "夏目漱石"
         }
       },
-      {
-        "_index": "books",
-        "_type": "_doc",
-        "_id": "3",
-        "_score": 0.85215265,
-        "_source": {
-          "id": 3,
-          "name": "走れメロス",
-          "body": "メロスは激怒した。必ず、かの邪智暴虐の王を除かなければならぬと決意した。メロスには政治がわからぬ。メロスは、村の牧人である。笛を吹き、羊と遊んで暮して来た。けれども邪悪に対しては、人一倍に敏感であった。きょう未明メロスは村を出発し、野を越え山越え、十里はなれた此のシラクスの市にやって来た。",
-          "author": "太宰治"
-        }
-      }
-    ]
-  }
-}
+...
+]
 ```
 
 
