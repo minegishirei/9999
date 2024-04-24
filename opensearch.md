@@ -11,8 +11,82 @@
 # Opensearchの環境構築
 
 
+### Docker入門 関連記事
+
+- [Docker入門](https://minegishirei.hatenablog.com/entry/2023/09/02/213936)
+- [Dockerのダウンロードとインストール(Mac編)](https://minegishirei.hatenablog.com/entry/2023/09/03/143528)
+- [Dockerのダウンロードとインストール(Windows編)](https://minegishirei.hatenablog.com/entry/2023/09/04/115946)
+- [Dockerのプロキシーの設定](https://minegishirei.hatenablog.com/entry/2023/09/05/120827)
+- [Dockerfileの書き方](https://minegishirei.hatenablog.com/entry/2023/09/11/102313)
 
 
+
+## 注意点
+
+使用するPCはWindowsでもMacでもLinuxでも構いません
+
+Docker for Desktopを使用しますので、事前にダウンロードをお願いいたします。
+
+## 手っ取り早くOpensearchの環境を作る
+
+Opensearchの実行方法は以下の通りです。
+コードを張り付ければ実行されます。
+
+```sh
+git clone https://github.com/minegishirei/OpensearchDocker.git
+cd OpensearchDocker
+docker-compose up
+```
+
+<img src="https://github.com/minegishirei/store/blob/main/opensearch/docker/success.png?raw=true">
+
+
+
+## docker-compose.ymlの内容
+
+```yml
+version: '3'
+services:
+  opensearch-node1:
+    image: opensearchproject/opensearch:latest
+    container_name: opensearch-node1
+    environment:
+      - cluster.name=opensearch-cluster
+      - node.name=opensearch-node1
+      - discovery.seed_hosts=opensearch-node1
+      - cluster.initial_cluster_manager_nodes=opensearch-node1
+      - bootstrap.memory_lock=true  # along with the memlock settings below, disables swapping
+      - OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m  # minimum and maximum Java heap size, recommend setting both to 50% of system RAM
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=Ops1234ops!?    # Sets the demo admin user password when using demo configuration, required for OpenSearch 2.12 and higher
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536  # maximum number of open files for the OpenSearch user, set to at least 65536 on modern systems
+        hard: 65536
+    volumes:
+      - ./data:/usr/share/opensearch/data
+    ports:
+      - 9200:9200
+      - 9600:9600  # required for Performance Analyzer
+    networks:
+      - opensearch-net
+    
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:latest
+    container_name: opensearch-dashboards
+    ports:
+      - 80:5601
+    expose:
+      - '80'
+    environment:
+      OPENSEARCH_HOSTS: '["https://opensearch-node1:9200"]'
+    networks:
+      - opensearch-net
+networks:
+  opensearch-net:
+```
 
 
 
