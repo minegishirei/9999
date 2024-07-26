@@ -1,0 +1,359 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  EnvironmentName:
+    Type: String
+    Default: "STUDY-reiminegishi"
+  VPCCidr:
+    Type: String
+    Default: '10.137.0.0/16'
+  PrivateSubnetCidrA:
+    Type: String
+    Default: '10.137.8.0/24' #0 + 0001 + 000 →10進では8
+  PrivateSubnetCidrC:
+    Type: String
+    Default: '10.137.9.0/24' #0 + 0001 + 001 →10進では9
+
+Resources:
+
+  # VPC
+  MyVPC:
+    Type: AWS::EC2::VPC
+    DeletionPolicy: Delete
+    Properties:
+      CidrBlock: !Ref VPCCidr
+      EnableDnsSupport: 'true'
+      EnableDnsHostnames: 'true'
+      InstanceTenancy: default
+      Tags:
+      - Key: Name
+        Value: !Sub "${EnvironmentName}-VPC"
+
+  # Private Subnet
+  ## A
+  PrivateSubnetA:
+    Type: AWS::EC2::Subnet
+    DeletionPolicy: Delete
+    Properties:
+      CidrBlock: !Ref PrivateSubnetCidrA
+      VpcId: !Ref MyVPC
+      AvailabilityZone: "ap-northeast-1a"
+      Tags:
+      - Key: Name
+        Value: !Sub "${EnvironmentName}-Private-AZ01"
+  ## C
+  PrivateSubnetC:
+    Type: AWS::EC2::Subnet
+    DeletionPolicy: Delete
+    Properties:
+      CidrBlock: !Ref PrivateSubnetCidrC
+      VpcId: !Ref MyVPC
+      AvailabilityZone: "ap-northeast-1c"
+      Tags:
+      - Key: Name
+        Value: !Sub "${EnvironmentName}-Private-AZ02"
+
+  # Private Route Table
+  PrivateRouteTable:
+    Type: AWS::EC2::RouteTable
+    DeletionPolicy: Delete
+    Properties:
+      VpcId: !Ref MyVPC
+      Tags:
+      - Key: Name
+        Value: !Sub "${EnvironmentName}-Private-RT"
+  ## Private Subnet Associations
+  PriSubAssocciation1:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      RouteTableId: !Ref PrivateRouteTable
+      SubnetId: !Ref PrivateSubnetA
+  PriSubAssocciation2:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      RouteTableId: !Ref PrivateRouteTable
+      SubnetId: !Ref PrivateSubnetC
+
+  # Private NACL
+  PrivateNetworkACL:
+    Type: AWS::EC2::NetworkAcl
+    DeletionPolicy: Delete
+    Properties:
+      Tags:
+      - Key: Name
+        Value: !Sub "${EnvironmentName}-Private-NACL"
+      VpcId: !Ref MyVPC
+  ## Attachment NACL
+  ### to Private Subnet A
+  PrivateNACLAttachSubnetA:
+    Type: AWS::EC2::SubnetNetworkAclAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: !Ref PrivateSubnetA
+      NetworkAclId: !Ref PrivateNetworkACL
+  ### to Private Subnet C
+  PrivateNACLAttachSubnetC:
+    Type: AWS::EC2::SubnetNetworkAclAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: !Ref PrivateSubnetC
+      NetworkAclId: !Ref PrivateNetworkACL
+  ## Inbound
+  ### 100番 : 0.0.0.0/0 80番 許可
+  PrivateNACLEntryInbound1:
+    Type: AWS::EC2::NetworkAclEntry
+    DeletionPolicy: Delete
+    Properties:
+      NetworkAclId: !Ref PrivateNetworkACL
+      CidrBlock: 0.0.0.0/0
+      Egress: false
+      Protocol: 6
+      RuleAction: allow
+      RuleNumber: 100
+      PortRange:
+        From: 80
+        To: 80
+  ### 200番 : 0.0.0.0/0 443番 許可
+  PrivateNACLEntryInbound2:
+    Type: AWS::EC2::NetworkAclEntry
+    DeletionPolicy: Delete
+    Properties:
+      NetworkAclId: !Ref PrivateNetworkACL
+      CidrBlock: 0.0.0.0/0
+      Egress: false
+      Protocol: 6
+      RuleAction: allow
+      RuleNumber: 200
+      PortRange:
+        From: 443
+        To: 443
+  ### 800番 : VPC内部のIPはすべて許可
+  PrivateNACLEntryInbound8:
+    Type: AWS::EC2::NetworkAclEntry
+    DeletionPolicy: Delete
+    Properties:
+      NetworkAclId: !Ref PrivateNetworkACL
+      CidrBlock: !Ref VPCCidr
+      Egress: false
+      Protocol: -1
+      RuleAction: allow
+      RuleNumber: 800
+  ### 900番 : 0.0.0.0/0 22番 拒否
+  PrivateNACLEntryInbound9:
+    Type: AWS::EC2::NetworkAclEntry
+    DeletionPolicy: Delete
+    Properties:
+      NetworkAclId: !Ref PrivateNetworkACL
+      CidrBlock: 0.0.0.0/0
+      Egress: false
+      Protocol: 6
+      RuleAction: deny
+      RuleNumber: 900
+      PortRange:
+        From: 22
+        To: 22
+  ### 1000番 : 0.0.0.0/0 1024~65535番 許可
+  PrivateNACLEntryInbound10:
+    Type: AWS::EC2::NetworkAclEntry
+    DeletionPolicy: Delete
+    Properties:
+      NetworkAclId: !Ref PrivateNetworkACL
+      CidrBlock: 0.0.0.0/0
+      Egress: false
+      Protocol: 6
+      RuleAction: allow
+      RuleNumber: 1000
+      PortRange:
+        From: 1024
+        To: 65535
+  ## Outbound
+  ### 100番 : 0.0.0.0/0 80番 許可
+  PrivateNACLEntryOutbound1:
+    Type: AWS::EC2::NetworkAclEntry
+    DeletionPolicy: Delete
+    Properties:
+      NetworkAclId: !Ref PrivateNetworkACL
+      CidrBlock: 0.0.0.0/0
+      Egress: true
+      Protocol: 6
+      RuleAction: allow
+      RuleNumber: 100
+      PortRange:
+        From: 80
+        To: 80
+  ### 200番 : 0.0.0.0/0 443番 許可
+  PrivateNACLEntryOutbound2:
+    Type: AWS::EC2::NetworkAclEntry
+    DeletionPolicy: Delete
+    Properties:
+      NetworkAclId: !Ref PrivateNetworkACL
+      CidrBlock: 0.0.0.0/0
+      Egress: true
+      Protocol: 6
+      RuleAction: allow
+      RuleNumber: 200
+      PortRange:
+        From: 443
+        To: 443
+  ### 800番 : VPC内部のIPはすべて許可
+  PrivateNACLEntryOutbound8:
+    Type: AWS::EC2::NetworkAclEntry
+    DeletionPolicy: Delete
+    Properties:
+      NetworkAclId: !Ref PrivateNetworkACL
+      CidrBlock: !Ref VPCCidr
+      Egress: true
+      Protocol: -1
+      RuleAction: allow
+      RuleNumber: 800
+  ### 900番 : 0.0.0.0/0 22番 拒否
+  PrivateNACLEntryOutbound9:
+    Type: AWS::EC2::NetworkAclEntry
+    DeletionPolicy: Delete
+    Properties:
+      NetworkAclId: !Ref PrivateNetworkACL
+      CidrBlock: 0.0.0.0/0
+      Egress: true
+      Protocol: 6
+      RuleAction: deny
+      RuleNumber: 900
+      PortRange:
+        From: 22
+        To: 22
+  ### 1000番 : 0.0.0.0/0 1024~65535番 許可
+  PrivateNACLEntryOutbound10:
+    Type: AWS::EC2::NetworkAclEntry
+    DeletionPolicy: Delete
+    Properties:
+      NetworkAclId: !Ref PrivateNetworkACL
+      CidrBlock: 0.0.0.0/0
+      Egress: true
+      Protocol: 6
+      RuleAction: allow
+      RuleNumber: 1000
+      PortRange:
+        From: 1024
+        To: 65535
+
+  # Endpoint
+  #S3Endpoint:
+  #  Type: AWS::EC2::VPCEndpoint
+  #  DeletionPolicy: Delete
+  #  Properties:
+  #    VpcId: !Ref MyVPC
+  #    RoutetableIds:
+  #      - !Ref PrivateRouteTable
+  #    ServiceName: com.amazonaws.ap-northeast-1.s3
+
+
+  # SecurityGroup
+  SecurityGroup: #TODO:セキュリティグループの必要ポートへの厳格化
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Sub "${EnvironmentName}-sg"
+      GroupDescription: Allow http to client host
+      VpcId: !Ref MyVPC
+      SecurityGroupEgress: # アウトバウンド設定（フルオープン）
+        - CidrIp: 0.0.0.0/0
+          IpProtocol: -1
+      SecurityGroupIngress: # インバウンド設定
+        - CidrIp: 0.0.0.0/0
+          IpProtocol: -1
+  
+  # Lambda 
+  ## IAM Role
+  LambdaExecutionIAMRole: #TODO:IAMロールの厳格化
+    UpdateReplacePolicy: "Delete"
+    Type: "AWS::IAM::Role"
+    DeletionPolicy: "Delete"
+    Properties:
+      Path: "/service-role/"
+      ManagedPolicyArns:
+      - "arn:aws:iam::aws:policy/AWSLambda_FullAccess"
+      - "arn:aws:iam::aws:policy/CloudWatchFullAccess"
+      - "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+      MaxSessionDuration: 3600
+      RoleName: !Sub "${EnvironmentName}-lambda-execution-role"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+        - Action: "sts:AssumeRole"
+          Effect: "Allow"
+          Principal:
+            Service: "lambda.amazonaws.com"
+  ## LambdaFunction
+  LambdaFunction:
+    UpdateReplacePolicy: "Delete"
+    Type: "AWS::Lambda::Function"
+    DeletionPolicy: "Delete"
+    Properties:
+      MemorySize: 128
+      Description: ""
+      TracingConfig:
+        Mode: "PassThrough"
+      VpcConfig:
+        SecurityGroupIds:
+        - !Ref SecurityGroup
+        SubnetIds:
+        - !Ref PrivateSubnetA
+        - !Ref PrivateSubnetC
+        Ipv6AllowedForDualStack: false
+      Timeout: 3
+      RuntimeManagementConfig:
+        UpdateRuntimeOn: "Auto"
+      Handler: "index.lambda_handler"
+      Code:
+        ZipFile: |
+          import json
+          def lambda_handler(event, context):
+              # TODO implement
+              return {
+                  'statusCode': 200,
+                  'body': json.dumps('Hello from Lambda!')
+              }
+      Role: !GetAtt LambdaExecutionIAMRole.Arn
+      FileSystemConfigs: []
+      FunctionName: !Sub "${EnvironmentName}-lambda"
+      Runtime: "python3.12"
+      PackageType: "Zip"
+      LoggingConfig:
+        LogFormat: "Text"
+        LogGroup: !Sub "/aws/lambda/${EnvironmentName}-lambda"
+      EphemeralStorage:
+        Size: 512
+      Architectures:
+      - "x86_64"
+
+  ApiGatewayDeployment00t6r5h700EvIDa:
+    UpdateReplacePolicy: "Delete"
+    Type: "AWS::ApiGateway::Deployment"
+    DeletionPolicy: "Delete"
+    Properties:
+      RestApiId:
+        Ref: "ApiGatewayRestApi00ms4lpfq5ke00Yzogq"
+  ApiGatewayRestApi00ms4lpfq5ke00Yzogq:
+    UpdateReplacePolicy: "Delete"
+    Type: "AWS::ApiGateway::RestApi"
+    DeletionPolicy: "Delete"
+    Properties:
+      ApiKeySourceType: "HEADER"
+      EndpointConfiguration:
+        Types:
+        - "REGIONAL"
+      DisableExecuteApiEndpoint: false
+      Name: " STUDY-reiminegishi-apigateway"
+  ApiGatewayStage00reiminegishistage00WN2Wf:
+    UpdateReplacePolicy: "Delete"
+    Type: "AWS::ApiGateway::Stage"
+    DeletionPolicy: "Delete"
+    Properties:
+      RestApiId:
+        Ref: "ApiGatewayRestApi00ms4lpfq5ke00Yzogq"
+      DeploymentId:
+        Fn::GetAtt:
+        - "ApiGatewayDeployment00t6r5h700EvIDa"
+        - "DeploymentId"
+      StageName: "reiminegishi-stage"
+      TracingEnabled: false
+      CacheClusterEnabled: false
