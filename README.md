@@ -1,6 +1,49 @@
 全部
 
 
+## 20250127
+
+
+- TODO : マーケティング領域の勉強
+- 信頼性の高い心理テスト -> 行動背景の理解
+- TODO : OpenTelemetry記事作成
+    - TODO : オブザーバビリティツールの分類分け
+    - TODO : OpenTelemetryの概要理解
+    - TODO : OpenTelemetryの実践
+    - TODO : ECS ADOT
+- TODO : 中古車
+- TODO : 赤ちゃん 申請
+- 投影法
+    - DONE : 風景構成法
+
+
+## 20250127
+
+- 投影法
+    - DOING : 風景構成法
+    - 家テスト
+    - 道・川・橋テスト
+    - 自由物体画
+    - 動物行動学
+        - 相手が目に映ったものを頭に入れ続ける
+        - 他には何がある?
+- 心理テスト
+    - 心理テストが当てる内容を予測することで、自らの強化になる。
+- TODO : OpenTelemetry記事作成
+    - TODO : ECS ADOT
+- DONE : GA
+- TODO : どうせタンパク質
+- TODO : 信頼性の高い心理テスト -> 行動背景の理解
+- TODO : 将棋心理学
+- TODO : 刻み打ち
+- DONE : 副業 ステージ変数を使って比較しよう。
+- TODO : 中古車
+- TODO : 赤ちゃん 申請
+    - 
+- 保留 : 
+    - いなげや スマホアプリ
+    - https://gtfobins.github.io/
+
 
 
 
