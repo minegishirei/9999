@@ -218,5 +218,16 @@
     - DONE : コンテンツマーケティング
     - DONE : 講演
     - DONE : スケールしないことをしよう
+- DONE : 技術広報
+    - DONE : 1day : Tさん実装
+    - DONE : 全体説明会
+    - DONE : 声かけ*3名
+    - DONE : OpenTelemetry
+    - DONE : 外部ウェブ申請
+
+### 指先
+- DONE : センシ調整完了
+    - TODO : これの記事を書く
+- DONE : 指トレーニング
 
 
