@@ -3,23 +3,18 @@
 ## やることリスト
 
 ### 観測 : 技術広報によるアピール
-
-- TODO : Qiitaイベント登壇
-    - TODO : Qiitaイベントの原稿用紙
-    - DONE : 出社 : Qiitaへプロジェクト関連の記事を出してみる
-    - DONE : 「バッチ処理で苦労したことと解決策」
-    - DONE : どんなプレゼンテーションにしたい?
 - TODO : OpenTelemetry記事作成
     - DONE : ツール比較
     - DONE : 概要理解と実践
-    - TODO : ECS ADOT の実装・検証 -> 記事化
+    - DONE : ECS ADOT の実装・検証 
+    - TODO : ECA ADOT -> 記事化
     - TODO : オライリー本
         - TODO : 測定器の記事
         - TODO : コレクター
 - WAIT : 個人Qiita
     - DONE : Qiitaアカウントのクレンジング
     - DONE : アセンブリ言語のリリース 「アセンブリ言語を学ぶことで得られるメリット【アセンブリ言語さくっと入門】」
-    - WAIT : アセンブリ言語のリリース 「」
+    - DONE : アセンブリ言語のリリース 「アセンブリ言語のHelloWorld」
 
 
 ### 観測 : 将棋心理学のオートマ化
@@ -30,15 +25,7 @@
 - TODO : 信頼性の高い心理テストによる行動背景の理解
 
 ### モデル化 : 技術力の強化
-- TODO : AWS無双
-- DONE : CTF Guide
-    - DONE : レース条件
-    - DONE : ダイレクトオブジェクト参照
-    - DONE : OAuth
-- DONE : 本番環境デプロイ手順書
-    - DONE : スクリプト構築
-    - DONE : リリース手順書作成
-    - DONE : 副業でのSQL修正
+- HOLD : Azure無双
 - HOLD : REAL WORLD HTTP
 - HOLD : [GTFOBins](https://gtfobins.github.io/) の調査・活用
 - HOLD : 即席EC2からの脱却 → ECSへの切り替え
