@@ -3,7 +3,6 @@
 ## やることリスト
 
 ### モデル化 : 技術力の強化
-- DONE : REAL WORLD HTTP
 - TODO : Azure無双
     - DONE : Account
     - compute
@@ -11,14 +10,16 @@
         - DONE : azurerm_container_app
     - network
         - TODO : VPN
+- TODO : AWS無双
 - WAIT : AIの過渡期 : バグバウンティ
+- TODO : ネットワークトラブルシューティング解決
 
 ### 観測 : 技術広報によるアピール
-- WAIT : 個人Qiita
+- DONE : 個人Qiita
     - DONE : Qiitaアカウントのクレンジング
     - DONE : アセンブリ言語のリリース 「アセンブリ言語を学ぶことで得られるメリット【アセンブリ言語さくっと入門】」
     - DONE : アセンブリ言語のリリース 「アセンブリ言語のHelloWorld」
-    - TODO : アセンブリ言語のリリース 「」
+    - DONE : アセンブリ言語のリリース 「」
 - DONE : Qiita OpenTelemetryの記事の解説!
 
 ### 観測 : 将棋心理学のオートマ化
@@ -26,7 +27,11 @@
 - DONE : k 信頼性向上
     - DONE : cloudwatchによる監視
     - DONE : SnapStartによる早期出発
-- iframeの実装
+    - DONE : Clarityによるサイトないの行動確認
+    - DONE : We have sent you an email to mine0114ykkykk@gmail.com so you can activate your account!
+    - DONE : Your account has been activated!
+    - DONE : You're receiving this email because you registered at Kotler.
+    - DONE : iframeの実装
 - マーケティング
     - 人を集めるための行動
         - DONE : どうやってアプローチするべきか? : ショートへの投稿新規視聴者を集めるツールに向いている。
@@ -52,3 +57,5 @@
     - WAIT(4月1日以降に出産された方及び出産予定日の8週間前の方に市役所からご案内を送付) : 妊婦のための支援給付(5万円)-子供の数だけもらえる : 市区町村の窓口
     - WAIT : 一週間 : 会社への申請
 - DONE : 3/18お休みの連絡
+- 3/29 : 日 : 理事会
+
