@@ -4,51 +4,23 @@
 
 ### モデル化 : 技術力の強化
 - TODO : Azure無双
-    - DONE : Account
-    - compute
-        - DONE : virtual_machines
-        - DONE : azurerm_container_app
-    - network
-        - TODO : VPN
-- TODO : AWS無双
-- WAIT : AIの過渡期 : バグバウンティ
-- TODO : ネットワークトラブルシューティング解決
+- DONE : ネットワークトラブルシューティング解決
+- TODO : OpenTelemetry 勉強会
 
 ### 観測 : 技術広報によるアピール
-- DONE : 個人Qiita
-    - DONE : Qiitaアカウントのクレンジング
-    - DONE : アセンブリ言語のリリース 「アセンブリ言語を学ぶことで得られるメリット【アセンブリ言語さくっと入門】」
-    - DONE : アセンブリ言語のリリース 「アセンブリ言語のHelloWorld」
-    - DONE : アセンブリ言語のリリース 「」
-- DONE : Qiita OpenTelemetryの記事の解説!
+- DONE : ECS ADOT まとめ
 
 ### 観測 : 将棋心理学のオートマ化
-- DONE : Kの実装
-- DONE : k 信頼性向上
-    - DONE : cloudwatchによる監視
-    - DONE : SnapStartによる早期出発
-    - DONE : Clarityによるサイトないの行動確認
-    - DONE : We have sent you an email to mine0114ykkykk@gmail.com so you can activate your account!
-    - DONE : Your account has been activated!
-    - DONE : You're receiving this email because you registered at Kotler.
-    - DONE : iframeの実装
-- マーケティング
-    - 人を集めるための行動
-        - DONE : どうやってアプローチするべきか? : ショートへの投稿新規視聴者を集めるツールに向いている。
-        - DONE : どうやってアプローチするべきか? : 知り合いに直接お願いをする。
-            - TODO : お願いするときの頼み方！
-        - 誰にアプローチするべきか? : 似たサービスのフォロワーを集める
-    - 人が離れるシステム = 信頼性
-        - 信頼性 : 速度が遅い
-    - 人を定着させるための行動
-        - どうやって定着させるか? : ライブ配信は新規視聴を集めるためのものではない
-- DONE : 口癖
-    - DONE : 「ちょっと」という口癖
-    - DONE : 「逆に」という口癖
-- HOLD : 将棋心理学の実践（頭の上に特化した脳を動かす訓練）
-- HOLD : 投影法の深化（家、道・川・橋、自由物体画）
-- HOLD : 動物行動学の応用（視覚情報の保持と問い立て）
-- HOLD : 信頼性の高い心理テストによる行動背景の理解
+- [プロダクト初期段階のコンセプト : マーケティングではスケールしないことをしよう](https://kotler.anyslove.com/topic/7/)
+- [プロダクト初期段階のやるべきではないこと : 広告/インフルエンサー](https://kotler.anyslove.com/topic/12/)
+- 人を集めるための行動
+    - [プロダクト初期段階のターゲティング : 知り合いに直接お願いをする](https://kotler.anyslove.com/topic/10/)
+    - [プロダクト初期段階のターゲティング : 似たサービスのフォロワーを集める](https://kotler.anyslove.com/topic/11/)
+    - [プロダクト初期段階の声かけ : URLを載せない/徹底&謙虚](https://kotler.anyslove.com/topic/13/)
+    - TODO : 最重要項目 - 社会的証明 : 「プロダクト初期段階のシステムが「社会的証明」を得るためにはどうすればいい?」
+        - 「みんなが使っている」と錯覚させる
+- 人を定着させるための行動
+    - TODO : プロダクトの信頼性
 
 
 ### ELSE
@@ -56,6 +28,14 @@
     - WAIT(出産後) : 出生育児一時金(50万) : 出産予定の産院or健康保険
     - WAIT(4月1日以降に出産された方及び出産予定日の8週間前の方に市役所からご案内を送付) : 妊婦のための支援給付(5万円)-子供の数だけもらえる : 市区町村の窓口
     - WAIT : 一週間 : 会社への申請
-- DONE : 3/18お休みの連絡
-- 3/29 : 日 : 理事会
+- 3/29(日) : 理事会
 
+
+### HOLD
+
+- HOLD : 将棋心理学の実践（頭の上に特化した脳を動かす訓練）
+- HOLD : 投影法の深化（家、道・川・橋、自由物体画）
+- HOLD : 動物行動学の応用（視覚情報の保持と問い立て）
+- HOLD : 信頼性の高い心理テストによる行動背景の理解
+- HOLD : AIの過渡期 - バグバウンティ
+- HOLD : 即席EC2からの脱却 → ECSへの切り替え
