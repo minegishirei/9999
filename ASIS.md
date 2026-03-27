@@ -111,6 +111,18 @@
 @ryo_mental99
 
 
+# 課題解決
+
+- 今までできていたこと : 自分の能力を磨くこと
+- これからやりたいと思っていること : 課題を解決すること
+
+「課題を解決する」という趣味は、なが〜く楽しむもの。なが〜く、ゆっくりじっくりやればいい
+
+どんな課題を解決するかも、ゆっくり選べばいい。
+
+
+
+
 
 
 
@@ -171,12 +183,15 @@
     - storage
         - DONE : storage_container
 - DONE : ネットワークトラブルシューティング解決
+- DONE : OpenTelemetry 勉強会
+- DONE : データ基盤アーキテクチャ図作成
 - DONE : オブザーバビリティツールの分類分け
 - DONE : 副業 Lambda バージョン整理（delete）
 - DONE : OpenTelemetry記事作成
     - DOING : 概要理解と実践
     - DONE : テレメトリデータの整理
     - TODO : ECS ADOT の実装・検証
+- DONE : ECS ADOT まとめ
 - TODO : 副業 Lambda（AdminLambda/CryptoAesgcmLambda）の環境変数設定および削除対応
 - TODO : マーケティング領域の基礎学習
 
