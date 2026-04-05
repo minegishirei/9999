@@ -161,6 +161,7 @@
     - DONE : アセンブリ言語のリリース 「」
 - DONE : Qiita OpenTelemetryの記事の解説!
 - DONE : GA（Google Analytics）連携・確認
+- DONE : NewRelic廃止作業
 
 ### モデル化 : 技術力の強化
 
@@ -198,6 +199,17 @@
 
 ### 観測 : 将棋心理学のオートマ化
 - DONE : Kの実装
+- kotler 初期記事作成
+    - DONE : [プロダクト初期段階のコンセプト : マーケティングではスケールしないことをしよう](https://kotler.anyslove.com/topic/7/)
+    - DONE : [プロダクト初期段階のやるべきではないこと : 広告/インフルエンサー](https://kotler.anyslove.com/topic/12/)
+    - 人を集めるための行動
+        - DONE : [プロダクト初期段階のターゲティング : 知り合いに直接お願いをする](https://kotler.anyslove.com/topic/10/)
+        - DONE : [プロダクト初期段階のターゲティング : 似たサービスのフォロワーを集める](https://kotler.anyslove.com/topic/11/)
+        - DONE : [プロダクト初期段階の声かけ : URLを載せない/徹底&謙虚](https://kotler.anyslove.com/topic/13/)
+- Kotler : 信頼性の向上
+    - DONE : SEO改善のためのタイトル変更
+    - DONE : PR Freeへの掲載 https://pr-free.jp/
+    - DONE : プレリリ への掲載 https://www.prerele.com/
 - DONE : k 信頼性向上
     - DONE : cloudwatchによる監視
     - DONE : SnapStartによる早期出発
@@ -225,5 +237,5 @@
 - DONE : センシ調整完了
     - TODO : これの記事を書く
 - DONE : 指トレーニング
-
+- DONE : デスク環境最適化
 
