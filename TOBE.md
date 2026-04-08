@@ -24,9 +24,13 @@
 - senden コンテンツ
     - DONE : Quoraのサービスは、どのようにして増えたのか? https://gigazine.net/news/20170713-how-startup-acquired-first-user/
     - WAIT : ユーザー数が増えたら、Clalifyを使う
-    - TODO : プロダクト設計 : どんなプロダクトを作るべきか?
-    - TODO : なくてはならない製品を作ろう/ユーザーの深い痛みを解決しよう/
+    - DONE : プロダクト設計 : どんなプロダクトを作るべきか?
+    - DONE : なくてはならない製品を作ろう/ユーザーの深い痛みを解決しよう/
     - TODO : プロダクトの信頼性 = 社会的保証を高める方法
+    - HOLD : 売れるビジネス企画をする方法 https://lp.startup-db.com/media/articles/smarthr
+- TODO : 返信 : https://x.com/peace_forever_x/status/2041473112873808376
+- TODO : 返信 : https://senden.anyslove.com/topic/26/%E8%B3%AA%E5%95%8F%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E6%95%B0%E3%81%8C%E5%A2%97%E3%81%88%E3%81%9F%E3%82%89%E3%81%A9%E3%82%93%E3%81%AA%E3%81%93%E3%81%A8%E3%82%92%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%A7%E3%81%99%E3%81%8B/#c2
+
 
 ### 個人開発 宣伝方法の習得
 - DONE : ページ内広告の付与(GTMの実装)
@@ -39,7 +43,7 @@
 - TODO : noteにも投稿する -> SEOの底上げ
     - TODO : 2/10記事
 - サイトマップの改善
-
+- TODO : 自己紹介カラムの追加
 
 ### 指先
 
