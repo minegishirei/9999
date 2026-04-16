@@ -21,6 +21,7 @@
     - CTF
 
 まぁこれ通りに動かなくても、勝てば良い。
+「積極的な撃ち合い」は大事。
 
 > **Note:正の副作用**
 > 
@@ -133,10 +134,7 @@
 # 過去やってきたこと
 
 
-## 202602
-
-### 観測 : 技術広報によるアピール
-
+## 観測 : 技術広報によるアピール
 - DONE : マーケティング領域の基礎学習
     - DONE : コンテンツマーケティング
     - DONE : 講演
@@ -147,6 +145,7 @@
     - DONE : 声かけ*3名
     - DONE : OpenTelemetry
     - DONE : 外部ウェブ申請
+    - DONE : PostgreSQL である理由
 - DONE : Qiitaイベント登壇
     - DONE : Qiitaイベントの原稿用紙
     - DONE : 出社 : Qiitaへプロジェクト関連の記事を出してみる
@@ -162,9 +161,13 @@
 - DONE : Qiita OpenTelemetryの記事の解説!
 - DONE : GA（Google Analytics）連携・確認
 - DONE : NewRelic廃止作業
+- M
+    - DONE : コストアラート対応
+    - DONE : S3先行リリース
+    - DONE : ヘルスチェックエンドポイントの追加によるコスト削減。
 
-### モデル化 : 技術力の強化
 
+## モデル化 : 技術力の強化
 - DONE : 副業-本番環境デプロイ手順書
     - DONE : スクリプト構築
     - DONE : リリース手順書作成
@@ -181,6 +184,7 @@
     - network
         - DONE : VPN
         - DONE : SecurityGroup
+        - DONE : cosmos db 
     - storage
         - DONE : storage_container
 - DONE : ネットワークトラブルシューティング解決
@@ -197,7 +201,7 @@
 - TODO : マーケティング領域の基礎学習
 
 
-### 観測 : 将棋心理学のオートマ化
+## 観測 : 将棋心理学のオートマ化
 - DONE : Kの実装
 - kotler 初期記事作成
     - DONE : [プロダクト初期段階のコンセプト : マーケティングではスケールしないことをしよう](https://kotler.anyslove.com/topic/7/)
@@ -219,10 +223,15 @@
     - DONE : You're receiving this email because you registered at Kotler.
     - DONE : iframeの実装
 - マーケティング
+    - プロダクト設計
+        - DONE : プロダクト設計 : どんなプロダクトを作るべきか?
+        - DONE : なくてはならない製品を作ろう/ユーザーの深い痛みを解決しよう/
     - 人を集めるための行動
         - DONE : どうやってアプローチするべきか? : ショートへの投稿新規視聴者を集めるツールに向いている。
         - DONE : どうやってアプローチするべきか? : 知り合いに直接お願いをする。
         - DONE : お願いするときの頼み方！
+        - DONE : Quora のサービスは、どのようにして増えたのか? https://gigazine.net/news/20170713-how-startup-acquired-first-user/
+        - DONE : ユーザー数が増えたら、Clalifyを使う
     - 人が離れるシステム = 信頼性
         - 信頼性 : 速度が遅い
     - 人を定着させるための行動
@@ -230,12 +239,36 @@
 - DONE : 口癖
     - DONE : 「ちょっと」という口癖
     - DONE : 「逆に」という口癖
+- コミュニティ
+    - DONE : 返信 : https://x.com/peace_forever_x/status/2041473112873808376
+    - DONE : 返信 : https://senden.anyslove.com/topic/26/%E8%B3%AA%E5%95%8F%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E6%95%B0%E3%81%8C%E5%A2%97%E3%81%88%E3%81%9F%E3%82%89%E3%81%A9%E3%82%93%E3%81%AA%E3%81%93%E3%81%A8%E3%82%92%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%A7%E3%81%99%E3%81%8B/#c2
+    - DONE : noteへのリリース : 個人開発のための集客手法が集まったサイト　Do Things That Don't Scale https://editor.note.com/notes/n093533669db9/edit/
+    - DONE : noteへのリリース : 【質問】スタートアップ企業のためのマーケティングの書籍はどれも中身が薄いと感じています。  : https://editor.note.com/notes/nf4419b417737/edit/
+    - DONE : twitter : 禁じ手であるかもしれないが、「コンテンツを自ら作成することでプロダクトが盛り上がっているように見せかける」は一つの参考にはなる。
+    - DONE : twitter : 活動報告 : https://senden.anyslove.com/topic/27/%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88/#c1
+    - DONE : twitter : 【サービス名の変更を行いました】
+- DONE : discord作成
+    - discord返信
 
 
+## 個人開発
+- DONE : ページ内広告の付与(GTMの実装)
+- DONE : 仮ユーザー数は10/10まで増やす
+- DONE : XRay 削除
+- DONE : サイトマップの改善
+- DONE : 自己紹介カラムの追加
+- DONE : ゴミ記事の掃除
 
-### 指先
+
+## 指先
 - DONE : センシ調整完了
     - TODO : これの記事を書く
 - DONE : 指トレーニング
 - DONE : デスク環境最適化
+
+
+## ELSE
+- DONE : 3/29(日) : 理事会
+    - DONE (出産後) : 出生育児一時金(50万) : 出産予定の産院or健康保険
+    - DONE : 一週間 : 会社への申請
 
