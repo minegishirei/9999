@@ -9,27 +9,37 @@
     - DONE : 3層アーキテクチャ
     - DONE : バッチ処理
     - DONE : プラグインアーキテクチャ
-    - サービスベースアーキテクチャ
+    - サービス指向アーキテクチャ
     - マイクロサービスアーキテクチャ
     - DONE : スペースベースアーキテクチャ
     - イベント駆動アーキテクチャ
 - 目標設定実施
     - サービス使用状況のイネイブリング
 - Azure
-    - 
+    - TODO : Azure Terraform SetUp
+    - TODO : Azure Functions App 作成
+    - TODO : Azure Functions Deploy
+    - TODO : azurerm_linux_function_appによるzure Functionsの構築【Azure Terraform】
 
 
 ### 観測 : 技術広報によるアピール
+
+- TODO : Azure Functions Deploy方法
+- TODO 成果報告
+    - TODO : twitter : 海外のサービスアイデアを取り込む
+    - TODO : discord : 海外のサービスアイデアを取り込む
+    - TODO : twitter : azurerm_linux_function_appによるzure Functionsの構築【Azure Terraform】
 
 
 ### 観測 : 将棋心理学のオートマ化
 - 一週間の活動報告
 - 書籍
-    - TODO : 【実体験】STARTUP　優れた起業家は何を考え、どう行動したか
+    - DONE : 【実体験】STARTUP　優れた起業家は何を考え、どう行動したか
 
 
 
 ### 個人開発 宣伝方法の習得
+- TODO : Googleとのフェデレーション登録
 - TODO : ページ内 無限横スクロール
 - TODO : ユーザー登録時の英語をなくす
 - TODO : aboutページの修正
